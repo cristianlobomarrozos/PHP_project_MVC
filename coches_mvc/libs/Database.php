@@ -8,6 +8,7 @@
 	 	private $dbnm = '' ;
 
 	 	private $pdo ;
+	 	private $sqlp ;
 	 	private static $instance = null ;
 	 	private $parameters;
 
@@ -47,34 +48,21 @@
 			$this->pdo = null ;
 		}
 
-		/**
-	     *	@void 
-	     *
-	     *	Áñade un parámetro al array de parametros
-	     *	@param string $para  
-	     *	@param string $value 
-	     */
-	    public function bind($para, $value)
-	    {
-	        $this->parameters[sizeof($this->parameters)] = [":" . $para , $value];
-	    }
-	    /**
-	     *	@void
-	     *	
-	     *	Añade más parámetros al array
-	     *	@param array $parray
-	     */
-	    public function bindMore($parray)
-	    {
-	        if (empty($this->parameters) && is_array($parray)) {
-	            $columns = array_keys($parray);
-	            foreach ($columns as $i => &$column) {
-	                $this->bind($column, $parray[$column]);
-	            }
-	        }
-	    }
+	    public function bindAll($sql, $parray = ""){
+		   	//echo "<br/>".$sql ;
+		    //echo "<pre>".print_r($parray,true)."</pre><br/>" ;
+		   	//die() ;
+		   	$this->sqlp = $this->pdo->prepare($sql) ;
+	    	//echo "<pre>".print_r($this->sqlp, true)."</pre>" ;
+		   	foreach($parray as $param => $value):
+	    		$this->sqlp->bindValue($param, $value) ;
+	    	endforeach;
 
-
+	    	$this->sqlp->execute() ;
+	    	//echo "<pre>".print_r($this->sqlp, true)."</pre>" ;
+		   	//die() ;
+	    //
+	    }
 		/**
 		 * Realiza la consulta a la base de datos y devuelve un resultado
 		 *

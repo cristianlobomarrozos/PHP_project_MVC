@@ -1,0 +1,125 @@
+<?php
+	require_once ("Sesion.php") ;
+	require_once ("./modelos/Usuario.php") ;
+	require_once ("Database.php") ;
+
+	$sesion = Sesion::getInstance() ;
+
+	//echo $usu->NomUsu;
+	//echo "<pre>".print_r($usu["NomUsu"],true)."</pre>" ;
+	
+	$db = Database::getInstance("root", "", "coches") ;
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Coches </title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="./css/style.css">	
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#add_model").on("click", function(e){
+				//e.preventDefault(e) ;
+				var con = $("#con").val() ;
+				var ope = $("#ope").val() ;
+				console.log(con, ope) ;
+				var NomMod = $("#modelo").val() ;
+				var potencia = $("#potencia").val() ;
+				var año = $("#año").val() ;
+				var marca = $("#marca").val() ;
+				var descripcion = $("#descripcion").val() ;
+				var precio = $("#precio").val() ;
+				var esClasico = $("#esClasico").val() ;
+				//console.log(data) ;
+
+				$.ajax({
+					url: "index.php?con=modelo&ope=anyadir",
+					method: "POST",
+					data: {
+						con: con,
+						ope: ope,
+						NomMod: NomMod,
+						CodMar: marca,
+						Potencia: potencia,
+						año: año,
+						Descripcion: descripcion,
+						Precio: precio,
+						esClasico: esClasico
+						
+					},
+				}) ;
+			}) ;
+
+			$(".delete_user").on("click", function(e) {
+				e.preventDefault(e) ;
+				var id = $(this).parents("tr").data("codusu");
+				//console.log(e.originalEvent) ;
+				console.log(id) ;
+				//alert("Hola") ;
+				$(".modal").modal("show") ;
+				$("#delete").attr("href", "index.php?con=usuario&ope=delete&id="+id) ;
+			}) ;
+		}) ;
+	</script>
+</head>
+<body>
+	<nav>
+		<div>
+		<ul>
+		  <li><a href="./index.php">Inicio</a></li>
+		  <li class="dropdown1">
+		  	<a class="dropdown1" href="javascript:void(0)">Modelos</a>
+		  	<div class="dropdown1-content">
+		  		<a href="index.php?con=modelo&ope=clasico">Clásicos</a>
+		  		<a href="index.php?con=modelo&ope=moderno">Modernos</a>
+		  	</div>
+		  </li>
+		  <?php
+		if ($sesion->checkActiveSession()):
+						$usu = $_SESSION["usuario"];
+						//echo "<pre>".print_r($_SESSION["usuario"], true)."</pre>" ;
+						//echo $usu;
+						if (!$db->query("SELECT esAdmin FROM usuario ")):
+							die("Error") ;
+						else:
+							//echo "<pre>".print_r($usu->getEsAdmin(), true)."</pre>" ;
+							if ($usu->getEsAdmin()):
+								echo "<li>" ;
+								echo "<a href=\"index.php?con=usuario&ope=listar\">Usuarios</a>" ;
+								echo "<a href=\"index.php?con=modelo&ope=listar\">Gestión modelos</a>" ;
+								echo "</li>" ;
+							endif;
+						endif;
+						echo "<li class=\"dropdown1\">" ;
+						echo "<a class=\"dropdown1\" href=\"javascript:void(0)\">".$usu->getNombre()."</a>" ;
+						echo "<div class=\"dropdown1-content\">"; 
+						echo "<a href=\"index.php?con=usuario&ope=perfil&id=".$usu->getCodUsu()."\">Perfil</a>";
+						echo "<a href=\"index.php?con=pedido&ope=pedidos&id=".$usu->getCodUsu()."\">Historial compras</a>";
+						//echo "<a href=\"#\">Ajustes</a>";
+						echo "<a href=\"index.php?con=usuario&ope=logout\">Logout</a>" ;
+
+						echo "</div>" ;
+						echo "</li>" ;
+
+					else:
+						echo "<li class=\"dropdown1\">" ;
+						echo "<a href=\"index.php?con=usuario&ope=login\">Login</a>" ;
+						echo "</li>" ;
+
+					endif; 
+				?>
+		  
+		</ul>
+	</div>
+	</nav>
+	<div class="wrapper">
+	

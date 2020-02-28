@@ -1,5 +1,6 @@
 <?php
-	
+
+
 	class Modelo {
 
 		private $CodMod;
@@ -7,7 +8,7 @@
 		private $NomMod;
 		private $Potencia;
 		private $año;
-		private $Clasico;
+		private $esClasico;
         private $Descripcion ;
         private $Precio ;
 
@@ -94,9 +95,9 @@
         /**
          * @return mixed
          */
-        public function getClasico()
+        public function getEsClasico()
         {
-            return $this->Clasico;
+            return $this->esClasico;
         }
 
         /**
@@ -104,9 +105,9 @@
          *
          * @return self
          */
-        public function setClasico($Clasico)
+        public function setEsClasico($esClasico)
         {
-            $this->Clasico = $Clasico;
+            $this->esClasico = $esClasico;
 
             return $this;
         }
@@ -169,6 +170,114 @@
             $this->Precio = $Precio;
 
             return $this;
+        }
+
+        public static function mostrarClasicos() {
+            $db = Database::getInstance() ;
+
+            $db->query("SELECT * FROM modelo WHERE esClasico=1") ;
+
+            $data = [] ;
+
+            while($row = $db->getObject("Modelo")):
+                //echo "<pre>".print_r($row, true)."</pre>" ;
+                array_push($data, $row) ;
+            endwhile;
+
+            return $data ;
+        }
+
+        public static function mostrarModernos() {
+            $db = Database::getInstance() ;
+
+            $db->query("SELECT * FROM modelo WHERE esClasico=0") ;
+
+            $data = [] ;
+
+            while($row = $db->getObject("Modelo")):
+                //echo "<pre>".print_r($row, true)."</pre>" ;
+                array_push($data, $row) ;
+            endwhile;
+
+            return $data ;
+        }
+
+        public static function mostrarTodos() {
+            $db = Database::getInstance() ;
+
+            $db->query("SELECT * FROM modelo JOIN marca on (modelo.CodMar=marca.CodMar)") ;
+
+            $data = [] ;
+
+            while($row = $db->getObject("Modelo")):
+                //echo "<pre>".print_r($row, true)."</pre>" ;
+                array_push($data, $row) ;
+            endwhile;
+
+            return $data ;
+        }
+
+        public static function mostrarModelo($id) {
+            $db = Database::getInstance() ;
+
+            $db->query("SELECT * FROM modelo WHERE codMod=$id") ;
+
+            $data = $db->getObject("Modelo") ;
+
+            return $data ;
+
+        }
+
+        public function anadir() {
+
+            $db = Database::getInstance() ;
+
+            $data = [
+                ":nom" => "{$this->NomMod}",
+                ":pot" => "{$this->Potencia}",
+                ":year" => "{$this->año}",
+                ":mar" => "{$this->CodMar}",
+                ":des" => "{$this->Descripcion}",
+                ":pre" => "{$this->Precio}",
+                ":cla" => "{$this->esClasico}"
+            ] ;
+
+            //echo "<pre>".print_r($db,true)."</pre><br/>" ;
+
+            $sql = "INSERT INTO modelo (NomMod, CodMar, Potencia, año, Descripcion, Precio, esClasico) VALUES (:nom, :mar, :pot, :year, :des, :pre, :cla)" ;
+            //echo $sql ;
+            //die() ;
+            $db->bindAll($sql, $data) ;
+
+            //$db->query() ;
+        }
+
+        public function delete($id) {
+            $db = Database::getInstance() ;
+            $sql = "DELETE FROM modelo WHERE CodMod=$id ;" ;
+
+            //echo $sql ;
+
+            //die() ;
+            $db->query($sql) ;
+        }
+
+        public function editar($id){
+            $db = Database::getInstance() ;
+
+            $data = [
+                ":nom" => "{$this->NomMod}",
+                ":pot" => "{$this->Potencia}",
+                ":year" => "{$this->año}",
+                ":mar" => "{$this->CodMar}",
+                ":des" => "{$this->Descripcion}",
+                ":pre" => "{$this->Precio}",
+                ":cla" => "{$this->esClasico}"
+            ] ;
+
+            $sql = "UPDATE modelo SET NomMod=:nom, CodMar=:mar, Potencia=:pot, año=:year, Descripcion=:des, Precio=:pre, esClasico=:cla WHERE CodMod={$this->CodMod} ;" ;
+
+            $db->bindAll($sql, $data) ;
         }
 }
 

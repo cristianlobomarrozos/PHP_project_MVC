@@ -1,7 +1,7 @@
 <?php
 	
-	require_once("../libs/Sesion.php") ;
-
+	require_once("./libs/Sesion.php") ;
+	include "./libs/Navbar.php" ;
 	$sesion = Sesion::getInstance() ;
 
 
