@@ -68,6 +68,17 @@
 				$(".modal").modal("show") ;
 				$("#delete").attr("href", "index.php?con=usuario&ope=delete&id="+id) ;
 			}) ;
+
+			$("#buy").on("click", function(e){
+				e.preventDefault(e) ;
+				var idu = $(this).data("codusu") ;
+				var idma = $(this).data("codmar") ;
+				var idm = $(this).data("codmod") ;
+				console.log(idu) ;
+				$("#comprado").modal("show") ;
+				$("#buying").attr("href", "index.php?con=pedido&ope=contiene&idm="+idm+"&idma="+idma+"&idu="+idu)
+
+			}) ;
 		}) ;
 	</script>
 </head>

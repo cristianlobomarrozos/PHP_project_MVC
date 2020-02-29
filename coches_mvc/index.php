@@ -60,7 +60,6 @@
 			</p>
 		</div>
 	</div>
-</div>
 
 <?php
 include "libs/Footer.php";

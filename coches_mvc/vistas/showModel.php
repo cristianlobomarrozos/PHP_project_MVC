@@ -1,11 +1,18 @@
 	<?php
 
-	include "libs/Navbar.php" ;
 
 	require_once "libs/Database.php" ;
+	require_once "libs/Sesion.php" ;
 	require_once "modelos/Modelo.php" ;
 
+	$sesion = Sesion::getInstance() ;
+	if (!$sesion->checkActiveSession())
+		 $sesion->redirect("index.php") ;
 
+	$usr = $_SESSION["usuario"] ;
+
+
+	include "libs/Navbar.php" ;
 ?>
 		<div class="content">
 			<div class="p-5">
@@ -29,13 +36,17 @@
 				<div class="font-weight-bold text-right" style="font-size: 2vw;">
 					<?= $mod->getPrecio() ?>€
 				</div>
-				<form action="index.php">
-					<input id="id" type="hidden" name="id" value="<?=$id?>" />
+				<form>
+					<input type="hidden" name="idm"  data-codmod="<?= $mod->getCodMod() ?>" />
+					<input type="hidden" name="idma" data-codmar="<?= $mod->getCodMar() ?>" />
+					<input type="hidden" name="idu"  data-codusu="<?= $usr->getCodUsu() ?>" />
+					<input type="hidden" name="con" value="pedido" />
+					<input type="hidden" name="ope" value="contiene" />
 					<div class="p-1">
 						<?php
 							if(!empty($mod->getPrecio())):
 						?>
-						<button type="submit" class="btn btn-primary">Comprar</button>
+						<button data-codusu="<?= $usr->getCodUsu() ?>" data-codmar="<?= $mod->getCodMar() ?>" data-codmod="<?= $mod->getCodMod() ?>" id="buy" type="submit" class="btn btn-primary">Comprar</button>
 						<?php
 							endif;
 						?>
@@ -43,6 +54,25 @@
 				</form>
 			</div>
 
+</div>
+<div id="comprado" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Compra realizada</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>¡Su compra se ha realizado con éxito!</p>
+      </div>
+      <div class="modal-footer">
+        <a id="buying" class="btn btn-danger" href="">Salir</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <?php
 include "libs/Footer.php";

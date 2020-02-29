@@ -101,6 +101,50 @@
 
             return $data ;
 	    }
+
+	    public function save() {
+	    	$db = Database::getInstance() ;
+	    	$sql = "INSERT INTO pedido(CodUsu, fecPedido, numeroPedido) values (:idu, :fec, :tok)" ;
+
+	    	$data = [
+	    		":idu" => "{$this->CodUsu}",
+	    		":fec" => "{$this->fecPedido}",
+	    		":tok" => "{$this->numeroPedido}"
+	    	] ;
+
+	    	echo "<pre>".print_r($data, true)."</pre>" ;
+	    	//die() ;
+
+	    	$db->bindAll($sql, $data) ;
+	    	/*$sql1 = "SELECT * FROM pedido WHERE numPedido=$tok" ;
+	    	$db->query($sql);
+	    	$ped = $db->getObject() ;
+	    	$idp = $ped->CodPed ;
+
+	    	$sql2 = "INSERT INTO contiene(CodMod, CodPed) values (:imd, :idp)" ;
+
+	    	$data2 = [
+	    		":idm" => $idm,
+	    		":idp" => $idp
+	    	] ;
+
+	    	$db->bindAll($sql2, $data2) ;*/
+	    }
+
+	    public function contiene($idm) {
+	    	$db = Database::getInstance() ;
+
+	    	$idp = $db->lastId() ;
+
+	    	$sql = "INSERT INTO contiene(CodMod, CodPed) VALUES (:mod, :ped)" ;
+	    	
+	    	$data = [
+	    		":mod" => $idm,
+	    		":ped" => $idp,
+	    	] ;
+
+	    	$db->bindAll($sql, $data) ;
+	    }
 }
 
 

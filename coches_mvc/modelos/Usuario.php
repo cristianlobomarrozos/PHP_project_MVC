@@ -264,6 +264,8 @@
         	] ;
 
         	echo "<pre>".print_r($data, true)."</pre>" ;
+        	//die() ;
+
 
         	$sql = "INSERT INTO usuario (NomUsu, email, pass, ApeUsu, FecNacUsu) VALUES (:nom, :ema, md5(:pas), :ape, :fec) " ;
 

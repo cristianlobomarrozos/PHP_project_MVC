@@ -98,7 +98,7 @@
 				$user->setNomUsu($NomUsu) ;
 				$user->setEmail($email) ;
 				$user->setApeUsu($ApeUsu) ;
-				//$user->setPass($pass) ;
+				$user->setPass($pass) ;
 				$user->setFecNacUsu($FecNacUsu) ;
 				$user->save() ;
 			endif;

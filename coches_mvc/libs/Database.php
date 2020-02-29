@@ -56,8 +56,10 @@
 	    	//echo "<pre>".print_r($this->sqlp, true)."</pre>" ;
 		   	foreach($parray as $param => $value):
 	    		$this->sqlp->bindValue($param, $value) ;
+	    		echo $param." => ".$value."<br/>" ;
 	    	endforeach;
-
+	    	//echo "<pre>".print_r($this->sqlp, true)."</pre>" ;
+	    	//die() ;
 	    	$this->sqlp->execute() ;
 	    	//echo "<pre>".print_r($this->sqlp, true)."</pre>" ;
 		   	//die() ;
@@ -84,7 +86,10 @@
 			return $this->res->fetchObject($cls) ;
 		}
 
-
+		public function lastId()
+		{
+			return $this->pdo->lastInsertId() ;
+		}
 	}
 
  ?>
