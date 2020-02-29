@@ -86,48 +86,59 @@
 		  <?php
 
 		
-		if ($sesion->checkActiveSession()):
-						//echo "<pre>".print_r($_SESSION["usuario"], true)."</pre>" ;
+						//echo "<pre>".print_r($sesion, true)."</pre>" ;
 						//echo $usu;
 						if(empty($_SESSION["usuario"])):
-							$db->query("SELECT esAdmin FROM usuario") ;
-							$usu = $db->getObject("Usuario") ;
-							$admin = $usu->getEsAdmin() ;
+							//echo "<pre>".print_r($_SESSION, true)."</pre>" ;
+							$admin = 0 ;
 							//echo $admin ;	
 							//echo "<pre>".print_r($usu, true)."</pre>" ;
 						else:
 							$usu = $_SESSION["usuario"];
+
 							$admin = $usu->getEsAdmin() ;
 							//echo "<pre>".print_r($usu, true)."</pre>" ;
 						endif;
-						if (!$db->query("SELECT esAdmin FROM usuario ")):
-							die("Error") ;
-						else:
-							//echo "<pre>".print_r($usu->getEsAdmin(), true)."</pre>" ;
-							if ($admin):
-								echo "<li>" ;
-								echo "<a href=\"index.php?con=usuario&ope=listar\">Usuarios</a>" ;
-								echo "<a href=\"index.php?con=modelo&ope=listar\">Gestión modelos</a>" ;
-								echo "</li>" ;
-							endif;
-						endif;
-						echo "<li class=\"dropdown1\">" ;
-						echo "<a class=\"dropdown1\" href=\"javascript:void(0)\">".$usu->getNomUsu()."</a>" ;
-						echo "<div class=\"dropdown1-content\">"; 
-						echo "<a href=\"index.php?con=usuario&ope=perfil&id=".$usu->getCodUsu()."\">Perfil</a>";
-						echo "<a href=\"index.php?con=pedido&ope=pedidos&id=".$usu->getCodUsu()."\">Historial compras</a>";
-						//echo "<a href=\"#\">Ajustes</a>";
-						echo "<a href=\"index.php?con=usuario&ope=logout\">Logout</a>" ;
+						
+					if ((!empty($_SESSION["usuario"]))):
+							//echo "<pre>".print_r($_SESSION, true)."</pre>" ;
+						if($admin):
+							echo "<li>" ;
+							echo "<a href=\"index.php?con=usuario&ope=listar\">Usuarios</a>" ;
+							echo "<a href=\"index.php?con=modelo&ope=listar\">Gestión modelos</a>" ;
+							echo "</li>" ;
+							echo "<li class=\"dropdown1\">" ;
+							echo "<a class=\"dropdown1\" href=\"javascript:void(0)\">".$usu->getNomUsu()."</a>" ;
+							echo "<div class=\"dropdown1-content\">"; 
+							echo "<a href=\"index.php?con=usuario&ope=perfil&id=".$usu->getCodUsu()."\">Perfil</a>";
+							echo "<a href=\"index.php?con=pedido&ope=pedidos&id=".$usu->getCodUsu()."\">Historial compras</a>";
+							//echo "<a href=\"#\">Ajustes</a>";
+							echo "<a href=\"index.php?con=usuario&ope=logout\">Logout</a>" ;
 
-						echo "</div>" ;
-						echo "</li>" ;
+							echo "</div>" ;
+							echo "</li>" ;
+						else:
+							echo "<li class=\"dropdown1\">" ;
+							echo "<a class=\"dropdown1\" href=\"javascript:void(0)\">".$usu->getNomUsu()."</a>" ;
+							echo "<div class=\"dropdown1-content\">"; 
+							echo "<a href=\"index.php?con=usuario&ope=perfil&id=".$usu->getCodUsu()."\">Perfil</a>";
+							echo "<a href=\"index.php?con=pedido&ope=pedidos&id=".$usu->getCodUsu()."\">Historial compras</a>";
+							//echo "<a href=\"#\">Ajustes</a>";
+							echo "<a href=\"index.php?con=usuario&ope=logout\">Logout</a>" ;
+
+							echo "</div>" ;
+							echo "</li>" ;
+						endif;
 
 					else:
+							//echo "<pre>".print_r($_SESSION, true)."</pre>" ;
+
 						echo "<li class=\"dropdown1\">" ;
 						echo "<a href=\"index.php?con=usuario&ope=login\">Login</a>" ;
 						echo "</li>" ;
 
 					endif;
+
 
 
 				?>

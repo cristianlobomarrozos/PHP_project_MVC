@@ -31,10 +31,10 @@
 					<input type="hidden" name="con" value="usuario">
 					<input type="hidden" name="ope" value="update">
 
-					<input type="text" disabled name="nombre" value="<?= $user->getNombre() ?>">
+					<input type="text" disabled name="nombre" value="<?= $user->getNomUsu() ?>">
 					<input type="int"  disabled name="email" value="<?= $user->getEmail() ?>">
-					<input type="int"  disabled name="apellidos" value="<?= $user->getApellidos() ?>">
-					<input type="int"  disabled name="fecNac" value="<?= $user->getFecNacimiento() ?>">
+					<input type="int"  disabled name="apellidos" value="<?= $user->getApeUsu() ?>">
+					<input type="int"  disabled name="fecNac" value="<?= $user->getFecNacUsu() ?>">
 					<select name="esAdmin">
 							<option value="0" <?php 
 												if($user->getEsAdmin()):

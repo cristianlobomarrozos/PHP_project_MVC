@@ -58,10 +58,10 @@
                 ?>
                 <tr data-codusu="<?= $item->getCodUsu() ?>" class="id" >  
                     <!--<input type="hidden"name="id">-->
-                    <td><input type="text" disabled name="nombre"    value="<?= $item->getNombre() ?>"></td>  
+                    <td><input type="text" disabled name="nombre"    value="<?= $item->getNomUsu() ?>"></td>  
                     <td><input type="int"  disabled name="email"     value="<?= $item->getEmail() ?>"></td>  
-                    <td><input type="int"  disabled name="apellidos" value="<?= $item->getApellidos() ?>"></td>  
-                    <td><input type="int"  disabled name="fecNac"    value="<?= $item->getFecNacimiento() ?>"></td>  
+                    <td><input type="int"  disabled name="apellidos" value="<?= $item->getApeUsu() ?>"></td>  
+                    <td><input type="int"  disabled name="fecNac"    value="<?= $item->getFecNacUsu() ?>"></td>  
                     <td>
                         <input type="text" disabled name="admin" value="<?php if($item->getEsAdmin()):
                                                                         echo "Si";

@@ -26,7 +26,7 @@
 
 		public function listar() {
 			$user = Usuario::mostrarTodos() ;
-
+            //echo "<pre>".print_r($user, true)."</pre>" ;
 			require_once "./vistas/adminUserView.php" ;
 
 		}
@@ -103,7 +103,7 @@
 				$user->save() ;
 			endif;
 
-			//require_once "./vistas/loginView.php" ;
+			require_once "./vistas/loginView.php" ;
 		}
 		
 	}

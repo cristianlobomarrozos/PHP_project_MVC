@@ -1,12 +1,11 @@
 <?php
 	
 	require_once("./libs/Sesion.php") ;
-	include "./libs/Navbar.php" ;
 	$sesion = Sesion::getInstance() ;
 
 
 	if ($sesion->checkActiveSession()):
-		$sesion->redirect("./index.php") ;
+		//$sesion->redirect("./index.php") ;
 	endif; 
 
 	if (!empty($_POST)):
@@ -21,6 +20,7 @@
 		endif;
 	endif;
 
+	include "./libs/Navbar.php" ;
 ?>
 
 		<form method="post">

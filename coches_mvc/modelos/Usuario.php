@@ -10,9 +10,7 @@
 		private $Avatar ;
 		private $esAdmin ;
 		private $pass ;
-		private function __construct() {
-
-		}
+		//private function __construct() {}
 
 	    /**
 	     * @return mixed
@@ -185,7 +183,9 @@
 	    	$sesion = Sesion::getInstance() ;
 
 	    	$sesion->close() ;
-
+	    	//if(!isset($_SESSION))
+	    	//	echo "<pre>".print_r($_SESSION, true)."</pre>" ;
+	    	//die() ;
 			$sesion->redirect("index.php") ;
 	    }
 
@@ -197,9 +197,9 @@
             $data = [] ;
 
             while($row = $db->getObject("Usuario")):
-                //echo "<pre>".print_r($row, true)."</pre>" ;
                 array_push($data, $row) ;
             endwhile;
+            //echo "<pre>".print_r($data, true)."</pre>" ;
 
             return $data ;
         }
