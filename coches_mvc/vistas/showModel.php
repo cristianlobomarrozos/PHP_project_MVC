@@ -29,7 +29,7 @@
 				<div class="font-weight-bold text-right" style="font-size: 2vw;">
 					<?= $mod->getPrecio() ?>€
 				</div>
-				<form action="compra.php">
+				<form action="index.php">
 					<input id="id" type="hidden" name="id" value="<?=$id?>" />
 					<div class="p-1">
 						<?php
@@ -42,3 +42,8 @@
 					</div>
 				</form>
 			</div>
+
+
+<?php
+include "libs/Footer.php";
+?>

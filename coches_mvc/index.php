@@ -11,8 +11,12 @@
 		$ope = $_GET["ope"] ;
 
 		$controller = $nom."Controller" ;
+ 
+		ucfirst($controller);
 
-		require_once "./controladores/".$controller.".php" ;
+		//echo "<h1>".ucfirst($controller)."</h1>" ; 
+		//die() ;
+		require_once "./controladores/".ucfirst($controller).".php" ;
 
 		$controlador = new $controller() ;
 
@@ -57,4 +61,9 @@
 		</div>
 	</div>
 </div>
+
+<?php
+include "libs/Footer.php";
+?>
 <?php endif; ?>
+

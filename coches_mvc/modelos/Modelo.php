@@ -190,6 +190,7 @@
         public static function mostrarModernos() {
             $db = Database::getInstance() ;
 
+            
             $db->query("SELECT * FROM modelo WHERE esClasico=0") ;
 
             $data = [] ;

@@ -26,3 +26,8 @@
 <?php 
     endforeach;
 ?> 
+
+
+<?php
+include "libs/Footer.php";
+?>

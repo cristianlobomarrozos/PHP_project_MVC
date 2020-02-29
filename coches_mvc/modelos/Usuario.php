@@ -9,10 +9,10 @@
 		private $FecNacUsu ;
 		private $Avatar ;
 		private $esAdmin ;
+		private $pass ;
+		private function __construct() {
 
-		//private function __construct() {
-
-		//}
+		}
 
 	    /**
 	     * @return mixed
@@ -57,7 +57,7 @@
 	    /**
 	     * @return mixed
 	     */
-	    public function getNombre()
+	    public function getNomUsu()
 	    {
 	        return $this->NomUsu;
 	    }
@@ -67,7 +67,7 @@
 	     *
 	     * @return self
 	     */
-	    public function setNombre($NomUsu)
+	    public function setNomUsu($NomUsu)
 	    {
 	        $this->NomUsu = $NomUsu;
 
@@ -77,7 +77,7 @@
 	    /**
 	     * @return mixed
 	     */
-	    public function getApellidos()
+	    public function getApeUsu()
 	    {
 	        return $this->ApeUsu;
 	    }
@@ -87,7 +87,7 @@
 	     *
 	     * @return self
 	     */
-	    public function setApellidos($ApeUsu)
+	    public function setApeUsu($ApeUsu)
 	    {
 	        $this->ApeUsu = $ApeUsu;
 
@@ -97,7 +97,7 @@
 	    /**
 	     * @return mixed
 	     */
-	    public function getFecNacimiento()
+	    public function getFecNacUsu()
 	    {
 	        return $this->FecNacUsu;
 	    }
@@ -107,7 +107,7 @@
 	     *
 	     * @return self
 	     */
-	    public function setFecNacimiento($FecNacUsu)
+	    public function setFecNacUsu($FecNacUsu)
 	    {
 	        $this->FecNacUsu = $FecNacUsu;
 
@@ -139,6 +139,7 @@
 	    	return $this->NomUsu." ".$this->ApeUsu ;
 	    }
 
+	    
 	    /**
 	     * @return mixed
 	     */
@@ -146,7 +147,6 @@
 	    {
 	        return $this->esAdmin;
 	    }
-
 	    /**
 	     * @param mixed $esAdmin
 	     *
@@ -157,6 +157,24 @@
 	        $this->esAdmin = $esAdmin;
 
 	        return $this;
+	    }
+
+	    /**
+	     * @return mixed
+	     */
+	    public function getPass(){
+	    	return $this->pass ;
+	    }
+
+	    /**
+	     * @param mixed $pass
+	     *
+	     * @return self
+	     */
+	    public function setPass($pass) {
+	    	$this->pass = $pass ;
+
+	    	return $this ;
 	    }
 
 	    public static function login() {
@@ -233,6 +251,27 @@
 
         	$db->bindAll($sql, $data) ;
         }
+
+        public function save() {
+        	$db = Database::getInstance() ;
+
+        	$data = [
+        		":nom" => "{$this->NomUsu}",
+        		":ema" => "{$this->email}",
+        		":pas" => "{$this->pass}",
+        		":ape" => "{$this->ApeUsu}",
+        		":fec" => "{$this->FecNacUsu}"
+        	] ;
+
+        	echo "<pre>".print_r($data, true)."</pre>" ;
+
+        	$sql = "INSERT INTO usuario (NomUsu, email, pass, ApeUsu, FecNacUsu) VALUES (:nom, :ema, md5(:pas), :ape, :fec) " ;
+
+        	$db->bindAll($sql, $data) ;
+        	//die() ;
+        }
+
+
 }
 	
 

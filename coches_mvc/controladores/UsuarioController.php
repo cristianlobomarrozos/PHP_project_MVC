@@ -83,5 +83,27 @@
 			route("index.php", "usuario", "listar") ;
 
 		}
+
+		public function registrar() {
+			echo "<pre>".print_r($_POST,true)."</pre>" ;
+			$NomUsu = $_POST["nombre"] ;
+			$email = $_POST["email"] ;
+			$ApeUsu = $_POST["apellidos"] ;
+			$pass = $_POST["pass"] ;
+			$conf = $_POST["conf"] ;
+			$FecNacUsu = $_POST["fnac"]??null ;
+
+			if($pass === $conf):
+				$user = new Usuario() ;
+				$user->setNomUsu($NomUsu) ;
+				$user->setEmail($email) ;
+				$user->setApeUsu($ApeUsu) ;
+				//$user->setPass($pass) ;
+				$user->setFecNacUsu($FecNacUsu) ;
+				$user->save() ;
+			endif;
+
+			//require_once "./vistas/loginView.php" ;
+		}
 		
 	}

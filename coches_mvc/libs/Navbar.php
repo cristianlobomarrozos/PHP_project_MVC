@@ -4,11 +4,11 @@
 	require_once ("Database.php") ;
 
 	$sesion = Sesion::getInstance() ;
+	$db = Database::getInstance() ;
 
 	//echo $usu->NomUsu;
 	//echo "<pre>".print_r($usu["NomUsu"],true)."</pre>" ;
 	
-	$db = Database::getInstance("root", "", "coches") ;
 
 ?>
 
@@ -84,15 +84,27 @@
 		  	</div>
 		  </li>
 		  <?php
+
+		
 		if ($sesion->checkActiveSession()):
-						$usu = $_SESSION["usuario"];
 						//echo "<pre>".print_r($_SESSION["usuario"], true)."</pre>" ;
 						//echo $usu;
+						if(empty($_SESSION["usuario"])):
+							$db->query("SELECT esAdmin FROM usuario") ;
+							$usu = $db->getObject("Usuario") ;
+							$admin = $usu->getEsAdmin() ;
+							//echo $admin ;	
+							//echo "<pre>".print_r($usu, true)."</pre>" ;
+						else:
+							$usu = $_SESSION["usuario"];
+							$admin = $usu->getEsAdmin() ;
+							//echo "<pre>".print_r($usu, true)."</pre>" ;
+						endif;
 						if (!$db->query("SELECT esAdmin FROM usuario ")):
 							die("Error") ;
 						else:
 							//echo "<pre>".print_r($usu->getEsAdmin(), true)."</pre>" ;
-							if ($usu->getEsAdmin()):
+							if ($admin):
 								echo "<li>" ;
 								echo "<a href=\"index.php?con=usuario&ope=listar\">Usuarios</a>" ;
 								echo "<a href=\"index.php?con=modelo&ope=listar\">Gestión modelos</a>" ;
@@ -100,7 +112,7 @@
 							endif;
 						endif;
 						echo "<li class=\"dropdown1\">" ;
-						echo "<a class=\"dropdown1\" href=\"javascript:void(0)\">".$usu->getNombre()."</a>" ;
+						echo "<a class=\"dropdown1\" href=\"javascript:void(0)\">".$usu->getNomUsu()."</a>" ;
 						echo "<div class=\"dropdown1-content\">"; 
 						echo "<a href=\"index.php?con=usuario&ope=perfil&id=".$usu->getCodUsu()."\">Perfil</a>";
 						echo "<a href=\"index.php?con=pedido&ope=pedidos&id=".$usu->getCodUsu()."\">Historial compras</a>";
@@ -115,7 +127,9 @@
 						echo "<a href=\"index.php?con=usuario&ope=login\">Login</a>" ;
 						echo "</li>" ;
 
-					endif; 
+					endif;
+
+
 				?>
 		  
 		</ul>

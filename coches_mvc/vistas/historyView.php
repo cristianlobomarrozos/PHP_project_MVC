@@ -62,3 +62,8 @@
 
 ?>
 </table>
+
+
+<?php
+include "libs/Footer.php";
+?>

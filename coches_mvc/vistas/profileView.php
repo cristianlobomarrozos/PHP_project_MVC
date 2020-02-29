@@ -36,9 +36,10 @@
 					<div class="col p-4">
 						<label>Avatar: </label><br/>
 						<?php
-								$avatar = $user->getAvatar() ;
+								//echo "<pre>".print_r($usr, true)."</pre>" ;
+								$avatar = $usr->getAvatar() ;
 							if (isset($avatar)):
-								$id = $user->getCodUsu() ;
+								$id = $usr->getCodUsu() ;
 								echo "<img src=\"$avatar\" class=\"perfil\">" ;
 							else:
 								//echo $usr->getAvatar() ;
@@ -50,7 +51,7 @@
 				<div class="row">
 					<div class="col">
 						<label>Email: </label>
-						<input disabled type="email" name="ema" value="<?= $user->getEmail() ?>" />
+						<input disabled type="email" name="ema" value="<?= $usr->getEmail() ?>" />
 					</div>
 				</div>
 
@@ -69,3 +70,9 @@
 				</div>			
 			</div>
 		</form>
+
+
+
+<?php
+include "libs/Footer.php";
+?>

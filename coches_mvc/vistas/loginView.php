@@ -67,6 +67,10 @@
 		<!-- acceso REGSISTRO -->
 		<div class="row">
 			<div class="col-md-12 text-center">
-				<a href="registro.php" class="btn btn-link">registrar</a>
+				<a href="./vistas/registUser.php" class="btn btn-link">registrar</a>
 			</div>
 		</div>
+
+<?php
+include "libs/Footer.php";
+?>

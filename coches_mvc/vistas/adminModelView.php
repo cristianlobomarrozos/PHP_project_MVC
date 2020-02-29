@@ -145,3 +145,8 @@ endif;
 </table>  
 
 </form>
+
+
+<?php
+include "libs/Footer.php";
+?>
