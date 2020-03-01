@@ -1,6 +1,5 @@
 <?php
 
-	require_once ("libs/Navbar.php") ;
 	require_once ("libs/Sesion.php") ;
 	require_once ("libs/Database.php") ;
 
@@ -27,6 +26,7 @@
 
 	endif ;
 
+	require_once ("libs/Navbar.php") ;
 ?>
 
 <div class="content">

@@ -6,7 +6,6 @@
 	require_once("./modelos/Modelo.php") ;
 	require_once("./modelos/Marca.php") ;
 	require_once("./libs/Sesion.php") ;
-	require_once("./libs/Navbar.php") ;
 
 
 	include("./css/bootstrap.php") ;
@@ -21,6 +20,7 @@
 
 	$idUsu = $usr->getCodUsu() ;
 
+	require_once("./libs/Navbar.php") ;
 	?>
 		<table class="table">
 		  <thead>

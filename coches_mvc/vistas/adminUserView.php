@@ -1,5 +1,4 @@
 <?php
-	include("libs/Navbar.php");
 
 	require_once("./libs/Database.php") ;
     require_once("./libs/Sesion.php") ;
@@ -27,6 +26,7 @@
 
     if($usr->getEsAdmin()):
 
+	include("libs/Navbar.php");
 ?>
 
 <table class="table table-borderless">  

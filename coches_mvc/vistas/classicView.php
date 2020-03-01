@@ -1,10 +1,10 @@
 
 <?php
-  require_once("./libs/Navbar.php") ;
   require_once("./libs/Database.php") ;
   require_once("./modelos/Modelo.php") ; 
 
 
+  require_once("./libs/Navbar.php") ;
 	foreach($mod as $item):
 ?>
 <div class="card mb-3 my-3" style="max-width: 100%;">
