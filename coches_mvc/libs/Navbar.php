@@ -1,15 +1,10 @@
 <?php
-	require_once ("Sesion.php") ;
-	require_once ("./modelos/Usuario.php") ;
-	require_once ("Database.php") ;
+	require_once "Sesion.php" ;
+	require_once "./modelos/Usuario.php" ;
+	include "./css/bootstrap.php" ;
 
 	$sesion = Sesion::getInstance() ;
-	$db = Database::getInstance() ;
-
-	//echo $usu->NomUsu;
-	//echo "<pre>".print_r($usu["NomUsu"],true)."</pre>" ;
 	
-
 ?>
 
 <!DOCTYPE html>

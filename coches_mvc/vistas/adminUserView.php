@@ -1,11 +1,6 @@
 <?php
-
-	require_once("./libs/Database.php") ;
-    require_once("./libs/Sesion.php") ;
 	require_once("./modelos/Usuario.php") ;
 
-	$db = Database::getInstance("root", "", "coches") ;
-	$despl = Database::getInstance("root", "", "coches") ;
 
     $ses = Sesion::getInstance() ;
 
@@ -101,9 +96,6 @@ endif;
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Eliminar usuario</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
       </div>
       <div class="modal-body">
         <p>¿Está seguro que desea eliminar a este usuario?.</p>

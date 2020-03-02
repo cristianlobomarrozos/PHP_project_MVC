@@ -1,11 +1,10 @@
-<<?php 
+<?php 
 	
 	class Database {
 
 		private $host = '' ;
 	 	private $user = 'root' ;
 	 	private $pass = '' ;
-	 	private $dbnm = '' ;
 
 	 	private $pdo ;
 	 	private $sqlp ;
@@ -56,7 +55,7 @@
 	    	//echo "<pre>".print_r($this->sqlp, true)."</pre>" ;
 		   	foreach($parray as $param => $value):
 	    		$this->sqlp->bindValue($param, $value) ;
-	    		echo $param." => ".$value."<br/>" ;
+	    		//echo $param." => ".$value."<br/>" ;
 	    	endforeach;
 	    	//echo "<pre>".print_r($this->sqlp, true)."</pre>" ;
 	    	//die() ;

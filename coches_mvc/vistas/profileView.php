@@ -1,8 +1,5 @@
 <?php
 
-	require_once ("libs/Sesion.php") ;
-	require_once ("libs/Database.php") ;
-
 	$ses = Sesion::getInstance() ;
 
 	if (!$ses->checkActiveSession())

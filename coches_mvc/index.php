@@ -17,16 +17,14 @@
 		//echo "<h1>".ucfirst($controller)."</h1>" ; 
 		//die() ;
 		require_once "./controladores/".ucfirst($controller).".php" ;
+		//echo $controller ;
+		//echo ucfirst($controller) ;
 
 		$controlador = new $controller() ;
 
 		$controlador->$ope() ;
 
 	else:
-?>
-
-
-<?php
 	include("libs/Navbar.php");
 ?>
 	<div class="container-fluid">

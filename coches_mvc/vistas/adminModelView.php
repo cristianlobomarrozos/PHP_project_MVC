@@ -1,12 +1,7 @@
 <?php
-
-	require_once "./libs/Database.php" ;
-    require_once "./modelos/Modelo.php" ;
-    require_once "./libs/Sesion.php" ;
 	require_once "./modelos/Marca.php" ;
 
-	$db = Database::getInstance("root", "", "coches") ;
-	$despl = Database::getInstance("root", "", "coches") ;
+	$despl = Database::getInstance() ;
 
     $ses = Sesion::getInstance() ;
 

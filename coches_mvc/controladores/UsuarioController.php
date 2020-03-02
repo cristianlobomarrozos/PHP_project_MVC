@@ -1,10 +1,8 @@
 <?php
 	//Cristian Lobo Marrozos
 	
-	require_once "./modelos/Usuario.php" ;
-	require_once "./libs/Sesion.php" ;
-	require_once "./libs/Routing.php" ;
-	//require_once "./vendor/autoload.php" ;
+	require_once "modelos/Usuario.php" ;
+	require_once "libs/Routing.php" ;
 
 	class UsuarioController {
 
@@ -102,8 +100,11 @@
 				$user->setFecNacUsu($FecNacUsu) ;
 				$user->save() ;
 			endif;
-
-			require_once "./vistas/loginView.php" ;
+            //echo "Hola" ;
+            $dir = getcwd();
+            //echo $dir ;
+            //die() ;
+			require_once "vistas/loginView.php" ;
 		}
 		
 	}

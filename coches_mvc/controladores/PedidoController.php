@@ -1,5 +1,7 @@
 <?php
-	//Cristian Lobo Marrozos
+	//Cristian Lobo Marrozos    
+	
+	define('CWD', getcwd());
 	
 	require_once "./modelos/Pedido.php" ;
 	require_once "./modelos/Marca.php" ;
@@ -15,6 +17,9 @@
 			$idu = $_GET["id"] ;
 
 			$ped = Pedido::mostrarPedidos($idu) ;
+			
+			//echo "<pre>".print_r($ped, true)."</pre>" ;
+			//die() ;
 
 			require_once "./vistas/historyView.php" ;
 		}

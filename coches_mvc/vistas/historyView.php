@@ -1,17 +1,4 @@
 <?php
-	
-	//echo "<pre>".print_r($_GET, true)."</pre>" ;
-
-	require_once("./libs/Database.php") ;
-	require_once("./modelos/Modelo.php") ;
-	require_once("./modelos/Marca.php") ;
-	require_once("./libs/Sesion.php") ;
-
-
-	include("./css/bootstrap.php") ;
-
-	$db = Database::getInstance("root", "", "coches") ;
-
 	$sesion = Sesion::getInstance() ;
 	if (!$sesion->checkActiveSession())
 		 $sesion->redirect("index.php") ;

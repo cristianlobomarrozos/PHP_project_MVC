@@ -98,7 +98,9 @@
             while($row = $db->getObject()):
             	array_push($data, $row) ;
             endwhile;
-
+            
+            //echo "<pre>".print_r($data, true)."</pre>" ;
+            //die() ;
             return $data ;
 	    }
 
@@ -116,19 +118,7 @@
 	    	//die() ;
 
 	    	$db->bindAll($sql, $data) ;
-	    	/*$sql1 = "SELECT * FROM pedido WHERE numPedido=$tok" ;
-	    	$db->query($sql);
-	    	$ped = $db->getObject() ;
-	    	$idp = $ped->CodPed ;
-
-	    	$sql2 = "INSERT INTO contiene(CodMod, CodPed) values (:imd, :idp)" ;
-
-	    	$data2 = [
-	    		":idm" => $idm,
-	    		":idp" => $idp
-	    	] ;
-
-	    	$db->bindAll($sql2, $data2) ;*/
+	    	
 	    }
 
 	    public function contiene($idm) {

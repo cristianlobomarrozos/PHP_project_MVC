@@ -210,7 +210,8 @@
             $db->query("SELECT * FROM usuario WHERE codUsu=$id") ;
 
             $data = $db->getObject("Usuario") ;
-
+            //echo "<pre>".print_r($data, true)."</pre>" ;
+            //die() ;
             return $data ;
         }
 
@@ -221,7 +222,7 @@
 
             $data = $db->getObject() ;
 
-            echo "<pre>".print_r($data, true)."</pre>" ;
+            //echo "<pre>".print_r($data, true)."</pre>" ;
             //die() ;
             return $data ;
         }
@@ -229,7 +230,7 @@
         public static function borraUsuario($id) {
         	$db = Database::getInstance() ;
         	$sql = "DELETE FROM usuario WHERE CodUsu=$id" ;
-        	echo $sql ;
+        	//echo $sql ;
         	//die() ;
         	$db->query($sql) ;
         }
@@ -240,7 +241,7 @@
         	
         	$idu = $this->CodUsu ;
 
-        	echo $this->esAdmin ;
+        	//echo $this->esAdmin ;
         	//die() ;
         	
         	$data = [
@@ -263,7 +264,7 @@
         		":fec" => "{$this->FecNacUsu}"
         	] ;
 
-        	echo "<pre>".print_r($data, true)."</pre>" ;
+        	//echo "<pre>".print_r($data, true)."</pre>" ;
         	//die() ;
 
 

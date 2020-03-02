@@ -1,4 +1,4 @@
-	<?php
+<?php
 
 
 	require_once "libs/Database.php" ;
@@ -6,8 +6,7 @@
 	require_once "modelos/Modelo.php" ;
 
 	$sesion = Sesion::getInstance() ;
-	if (!$sesion->checkActiveSession())
-		 $sesion->redirect("index.php") ;
+
 
 	$usr = $_SESSION["usuario"] ;
 

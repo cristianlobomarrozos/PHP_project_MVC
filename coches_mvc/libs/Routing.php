@@ -1,6 +1,4 @@
 <?php
-
-
 	function route($url, $con, $ope, $params=[])
 	{
 		// construimos la ruta base
@@ -12,6 +10,7 @@
 
 		// redirigimos
 		header('location:'.$ruta) ;
+		exit;
 	}
 
 	function route1($url)
@@ -20,6 +19,7 @@
 		$ruta = "$url" ;
 
 		header('location:'.$ruta) ;
+		exit;
 	}
 
 	/**

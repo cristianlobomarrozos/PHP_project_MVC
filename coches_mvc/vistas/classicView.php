@@ -1,8 +1,4 @@
-
 <?php
-  require_once("./libs/Database.php") ;
-  require_once("./modelos/Modelo.php") ; 
-
 
   require_once("./libs/Navbar.php") ;
 	foreach($mod as $item):

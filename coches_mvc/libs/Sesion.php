@@ -1,5 +1,4 @@
 <?php
-
 	require_once "Database.php";
 	require_once "./modelos/Usuario.php";
 	
@@ -20,7 +19,7 @@
 		{
 
 			// 1. actualice el usuario en la base de datos
-			$db = Database::getInstance("root", "", "coches") ;
+			$db = Database::getInstance() ;
 			$email = $usr->getEmail();
 			$id = $usr->getCodUsu() ;
 			$foto = $usr->getAvatar() ;
@@ -42,7 +41,7 @@
 			session_destroy() ;
 		}
 
-		public function getInstance() {
+		public static function getInstance() {
 			if(!isset($_SESSION)):
 				session_start() ;
 			endif;
@@ -59,7 +58,7 @@
 		}
 
 		public function login(string $email, string $password) {
-			$db = Database::getInstance("root", "", "coches") ;
+			$db = Database::getInstance() ;
 
 			$sql = "SELECT * FROM usuario WHERE email='$email' AND pass=MD5('$password')" ;
 
@@ -102,10 +101,6 @@
 		public function __sleep()
 		{
 			return ["usuario", "instancia"] ;
-		}
-
-		public function admin() {
-			echo $this->usuario ;
 		}
 
 	}

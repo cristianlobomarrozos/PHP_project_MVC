@@ -1,31 +1,25 @@
 <?php
 
-	require_once("./libs/Database.php") ;
-	require_once("./libs/Sesion.php") ;
-	require_once("./modelos/Usuario.php") ;
-
 	include("./css/bootstrap.php") ;
 
-	$db = Database::getInstance("root", "", "coches") ;
 
 	$sesion = Sesion::getInstance() ;
+	
 	if (!$sesion->checkActiveSession()) 
-		 $sesion->redirect("../index.php") ;
+		 $sesion->redirect("./index.php") ;
 	
 	$usr = $_SESSION["usuario"] ;
-
+    
 	$esAdmin = $usr->getEsAdmin() ;
     //echo $esAdmin ;
     
     if (!$esAdmin):
-        $sesion->redirect("../index.php") ;
+        $sesion->redirect("./index.php") ;
     else:
 
     	//echo "<pre>".print_r($user, true)."</pre>" ;
 
 		?>
-
-
 			<form action="index.php">
 					<input type="hidden" name="id"  value="<?= $user->getCodUsu() ?>">
 					<input type="hidden" name="con" value="usuario">
