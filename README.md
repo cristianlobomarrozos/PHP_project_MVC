@@ -20,6 +20,6 @@ La funcionalidad de compra todavía no está del todo implementada, ya que falta
 
 Cada usuario puede acceder a su perfil y, dentro de él, puede cambiar su imagen de perfil, así como pedir la generación de una API_KEY, la cual será de utilidad en versiones futuras y será única al hacer uso del id del usuario(PK) y del mail, el cual debe ser único. Además, también tendrá acceso a su historial de compras en el que aparecerán todos los pedidos que dicho usuario haya realizado.
 
-Al registrarse en la aplicación, en local no es necesario incluir fecha de nacimiento, mientras que en el servidor, si que es necesario rellenar este campo, ya que si está vacío, no realizará la inserción, por lo tanto no podrá acceder dicho usuario.
+Al registrarse en la aplicación, en local no es necesario incluir fecha de nacimiento, mientras que en el servidor, si que es necesario rellenar este campo, ya que si está vacío, no realizará la inserción, por lo tanto no podrá acceder dicho usuario. Además de esto, como predeterminado será registrado como no administrador, algún administrador debería ascenderlo en caso de que así lo considere.
 
 
