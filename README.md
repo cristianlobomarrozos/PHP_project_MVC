@@ -1,4 +1,4 @@
-# Php-project
+# Php-project-mvc
 
 Este proyecto trata de una página web de compra de coches. Se pueden encontrar coches tanto deportivos clásicos, como deportivos y utilitarios modernos.
 
