@@ -5,7 +5,7 @@ Este proyecto trata de una página web de compra de coches. Se pueden encontrar 
 Distinguiremos dos tipos de usuario: 
   - Usuarios normales
   - Usuarios administradores
- Una cuenta de usuario administrador es:
+Una cuenta de usuario administrador es:
   - User: admin@admin.es
   - Password: 12345
 
