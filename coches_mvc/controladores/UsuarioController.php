@@ -106,5 +106,15 @@
             //die() ;
 			require_once "vistas/loginView.php" ;
 		}
+
+		public function api() {
+		    $idu = $_GET["id"] ;
+		    //echo $idu ;
+		    //die();
+		    $user = new Usuario() ;
+		    $user->generateApi($idu) ;
+		    
+		    header("Location: index.php?con=usuario&ope=listar&id=".$idu) ;
+		}
 		
 	}

@@ -51,7 +51,12 @@
 
 			$ped->contiene($idm) ;
 
-			route1("index.php") ;
+			echo '<script type="text/javascript">';
+        	echo 'window.location.href="./index.php"' ;
+        	echo '</script>';
+        	echo '<noscript>';
+        	echo '<meta http-equiv="refresh" content="0;url='.$url.'" />';
+        	echo '</noscript>';
 
 			//route("index.php", "", "") ;
 

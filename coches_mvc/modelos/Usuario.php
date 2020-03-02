@@ -10,6 +10,7 @@
 		private $Avatar ;
 		private $esAdmin ;
 		private $pass ;
+		private $API_KEY ;
 		//private function __construct() {}
 
 	    /**
@@ -175,6 +176,23 @@
 	    	return $this ;
 	    }
 
+	    /**
+	     * @return mixed
+	     */
+	    public function getAPI_KEY(){
+	    	return $this->API_KEY ;
+	    }
+	    /**
+	     * @param mixed $API_KEY
+	     * 
+	     * @return self 
+	     */
+	    public function setAPI_KEY($api) {
+	        $this->API_KEY = $api ;
+	        
+	        return $this ;
+	    }
+
 	    public static function login() {
 	    	require_once "./vistas/loginView.php" ;
 	    }
@@ -272,6 +290,26 @@
 
         	$db->bindAll($sql, $data) ;
         	//die() ;
+        }
+
+        public function generateApi($id) {
+            $db = Database::getInstance() ;
+            
+            $sql = "SELECT * FROM usuario WHERE CodUsu = $id" ;
+            $db->query($sql) ;
+            $result = $db->getObject("Usuario") ;
+            
+            $id = $result->getCodUsu() ;
+			$email = $result->getEmail() ;
+			$api = "$email".time() ;
+			$md5 = md5($api) ;
+			
+			$data = [
+                ":api" => $md5			    
+            ] ;
+            
+            $sql1 = "UPDATE usuario SET API_KEY=:api WHERE CodUsu=$id ;" ;
+            $db->bindAll($sql1, $data) ;
         }
 
 

@@ -24,13 +24,24 @@
 	endif ;
 
 	require_once ("libs/Navbar.php") ;
+	if(is_null($usr->getAPI_KEY())):
+	    $api = "" ;
+	   
+    else:
+        $api = $usr->getAPI_KEY() ;
+      
+    endif ;
 ?>
 
 <div class="content">
+    
+    <label>Generar API key: </label><a class="btn btn-primary" href="index.php?con=usuario&ope=api&id=<?=$user->getCodUsu()?>">Generar</a>
 		<form method="post" enctype="multipart/form-data">
 			<div class="p-5 m-5">
 				<div class="row">
 					<div class="col p-4">
+					    <label>API: </label><br/>
+					    <h4><?php echo $api ; ?></h4>
 						<label>Avatar: </label><br/>
 						<?php
 								//echo "<pre>".print_r($usr, true)."</pre>" ;

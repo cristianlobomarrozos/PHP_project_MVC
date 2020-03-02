@@ -1,6 +1,8 @@
 <?php
 
   require_once("./libs/Navbar.php") ;
+
+  //echo "<pre>".print_r($mod, true)."</pre>" ;
 	foreach($mod as $item):
 ?>
 <div class="card mb-3 my-3" style="max-width: 100%;">
