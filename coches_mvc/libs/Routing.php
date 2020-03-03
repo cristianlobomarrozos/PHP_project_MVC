@@ -22,9 +22,4 @@
 		exit;
 	}
 
-	/**
-	 */
-	function prettyCode($txt)
-	{
-		echo "<pre>".print_r($txt, true)."</pre>" ;
-	}
+	

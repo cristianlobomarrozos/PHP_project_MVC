@@ -115,6 +115,7 @@
 		    $user->generateApi($idu) ;
 		    
 		    header("Location: index.php?con=usuario&ope=listar&id=".$idu) ;
+		    exit ;
 		}
 		
 	}
