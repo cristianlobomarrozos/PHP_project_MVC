@@ -22,38 +22,6 @@
 
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$("#add_model").on("click", function(e){
-				//e.preventDefault(e) ;
-				var con = $("#con").val() ;
-				var ope = $("#ope").val() ;
-				console.log(con, ope) ;
-				var NomMod = $("#modelo").val() ;
-				var potencia = $("#potencia").val() ;
-				var año = $("#año").val() ;
-				var marca = $("#marca").val() ;
-				var descripcion = $("#descripcion").val() ;
-				var precio = $("#precio").val() ;
-				var esClasico = $("#esClasico").val() ;
-				//console.log(data) ;
-
-				$.ajax({
-					url: "index.php?con=modelo&ope=anyadir",
-					method: "POST",
-					data: {
-						con: con,
-						ope: ope,
-						NomMod: NomMod,
-						CodMar: marca,
-						Potencia: potencia,
-						año: año,
-						Descripcion: descripcion,
-						Precio: precio,
-						esClasico: esClasico
-						
-					},
-				}) ;
-			}) ;
-
 			$(".delete_user").on("click", function(e) {
 				e.preventDefault(e) ;
 				var id = $(this).parents("tr").data("codusu");

@@ -8,7 +8,7 @@
 	$sesion = Sesion::getInstance() ;
 
 
-	$usr = $_SESSION["usuario"] ;
+	$usr = $_SESSION["usuario"]??0 ;
 
 
 	include "libs/Navbar.php" ;
@@ -53,6 +53,9 @@
 				</form>
 			</div>
 
+<?php
+include "./libs/Footer.php";
+?>
 </div>
 <div id="comprado" class="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
@@ -69,7 +72,3 @@
     </div>
   </div>
 </div>
-
-<?php
-include "libs/Footer.php";
-?>

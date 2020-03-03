@@ -18,7 +18,7 @@
 		public function updateUsuario(Usuario $usr) 
 		{
 
-			// 1. actualice el usuario en la base de datos
+			
 			$db = Database::getInstance() ;
 			$email = $usr->getEmail();
 			$id = $usr->getCodUsu() ;
@@ -29,7 +29,7 @@
 
 			//echo $sql;
 
-			// 2. actualice el usuario en la sesión
+			
 			$this->usuario = $usr ;
 
 

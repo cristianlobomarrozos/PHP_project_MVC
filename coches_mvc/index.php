@@ -3,7 +3,7 @@
 	require_once "libs/Database.php" ;
 	require_once "modelos/Marca.php" ;
 	require_once "libs/Sesion.php" ;
-
+	
 	//echo "<pre>".print_r($_GET, true)."</pre>" ;
 	if(isset($_GET["con"])):
 

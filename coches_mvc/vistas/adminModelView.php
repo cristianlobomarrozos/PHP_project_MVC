@@ -26,7 +26,7 @@
 ?>
 
 <table class="table table-borderless">  
-    <form id="add_model_form" class="form-inline" method="post" action="index.php?con=modelo&ope=anyadir">
+    <form id="add_model_form" class="form-inline" method="get" action="index.php">
         <!--<input id="cop" type="hidden" name="cop"/>-->
         <input type="hidden" name="con" id="con" value="modelo">
         <input type="hidden" name="ope" id="ope" value="anyadir">

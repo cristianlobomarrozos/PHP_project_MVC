@@ -25,8 +25,7 @@
 ?>
 
 <table class="table table-borderless">  
-    <form class="form-inline" method="post">
-        <input id="cop" type="hidden" name="cop"/>
+
         <div class="form-group">
             <thead>  
                 <tr>  
@@ -40,7 +39,7 @@
             </thead>
 
         </div>
-    </form>
+
       
 <form class="form-inline" method="get">
     <div class="form-group">

@@ -43,14 +43,15 @@
 		}
 
 		public function anyadir() {
-			//echo "<pre>".print_r($_POST, true)."</pre>" ;
-			$NomMod = $_POST["modelo"] ;
-			$Potencia = $_POST["potencia"] ;
-			$año = $_POST["año"] ;
-			$marca = $_POST["marca"] ;
-			$descripcion = $_POST["descripcion"] ;
-			$precio = $_POST["precio"] ;
-			$esClasico = $_POST["esClasico"] ;
+			//echo "<pre>".print_r($_GET, true)."</pre>" ;
+			//die() ;
+			$NomMod = $_GET["modelo"] ;
+			$Potencia = $_GET["potencia"] ;
+			$año = $_GET["año"] ;
+			$marca = $_GET["marca"] ;
+			$descripcion = $_GET["descripcion"]??null ;
+			$precio = $_GET["precio"]??null ;
+			$esClasico = $_GET["esClasico"] ;
 
 			$mod = new Modelo() ;
 			$mod->setNomMod($NomMod) ;
@@ -116,7 +117,7 @@
 				// refrescar el objeto en la base de datos
 				$mod->editar($idm) ;
 				//die() ;
-				// redirigimos a la página principal
+				// redirigimos a la página de procedencia
 				route('index.php', 'modelo', 'listar') ;				
 			endif ;
 		}

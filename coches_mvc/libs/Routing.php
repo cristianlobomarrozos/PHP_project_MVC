@@ -15,7 +15,7 @@
 
 	function route1($url)
 	{
-		// construimos la ruta base
+		
 		$ruta = "$url" ;
 
 		header('location:'.$ruta) ;
